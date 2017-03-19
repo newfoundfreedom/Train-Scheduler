@@ -1,10 +1,14 @@
 
 .container .jumbotron {
     height: 300px;
-    background: lightgrey url("../images/gm-train.jpg") no-repeat 0px -275px;
+    background: lightgrey url("../images/gm-train.jpg") no-repeat 0 -275px;
     background-size: cover;
     border-radius: 0;
     margin-bottom: 0;
+}
+
+.jumbotron {
+    position: relative;
 }
 
 .panel, .panel-heading, .panel-body, panel-collapse {
@@ -13,5 +17,66 @@
 }
 
 #accordion {
-    margin-top: 50px;
+    margin-top: 45px;
 }
+
+#clock {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 500;
+    position: absolute;
+    bottom: 10px;
+    right: 25px;
+}
+
+/*MEDIA QUERIES*/
+/*!* Landscape tablets and medium desktops *!*/
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container .jumbotron {
+        height: 265px;
+        background-position-y: -215px;
+    }
+}
+
+/*!* Portrait tablets and small desktops *!*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .container .jumbotron {
+        height: 185px;
+        background-position-y: -175px;
+    }
+
+    #clock {
+        font-size: 35px;
+        bottom: 5px;
+        right: 15px;
+    }
+}
+
+/*!* Landscape phones and portrait tablets *!*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .container .jumbotron {
+        height: 26vw;
+        background-position-y: -22.5vw;
+    }
+
+    #clock {
+        font-size: 35px;
+        bottom: 5px;
+        right: 15px;
+    }
+}
+
+/*!* Portrait phones and smaller *!*/
+@media (max-width: 480px) {
+    .container .jumbotron {
+        height: 26vw;
+        background-position-y: -22.5vw;
+    }
+
+    #clock {
+        font-size: 35px;
+        bottom: 5px;
+        right: 15px;
+    }
+}
+
