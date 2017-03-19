@@ -112,5 +112,7 @@ $(document).ready(function () {
         setInterval(updatetable, 60 * 1000)
     }
 
+    // initiate clock and schedule updater on load
     start();
+
 });// end of document ready
