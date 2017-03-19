@@ -19,4 +19,5 @@ This is a fully responsive train schedule app, which presents a dyanmic train sc
 ### Future Development (wish-list)
 - make it so that the schedule is updated at the top of each minute instaed of 60 seconds from page load
 - create a function that allows users to delete a train after clicking on a table row
+- create a visual alert (row going red) when a train is within 5 minutes of arriving
 - create ability for user to re-order trains within table, or to reorganize table based on soonest to arrive, or alphabetical by name, etc.
