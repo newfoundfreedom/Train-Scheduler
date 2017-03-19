@@ -1,0 +1,17 @@
+
+.container .jumbotron {
+    height: 300px;
+    background: lightgrey url("../images/gm-train.jpg") no-repeat 0px -275px;
+    background-size: cover;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.panel, .panel-heading, .panel-body, panel-collapse {
+    border-radius: 0;
+    margin: 0;
+}
+
+#accordion {
+    margin-top: 50px;
+}

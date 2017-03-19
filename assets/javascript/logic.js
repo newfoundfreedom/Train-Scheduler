@@ -1,5 +1,7 @@
+$(document).ready(function(){
+
 // Initialize Firebase
-var config = {
+const config = {
     apiKey: "AIzaSyAKLnPNcYeNduFw4TOYkqbUr1mNoXvPLXg",
     authDomain: "rps-multi-bb0e5.firebaseapp.com",
     databaseURL: "https://rps-multi-bb0e5.firebaseio.com",
@@ -8,7 +10,8 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var db = firebase.database();
+// define short variable name for database
+const db = firebase.database();
 
 
 // Initialize inputs with blank values upon load
@@ -40,20 +43,25 @@ $('#add-btn').on('click', function () {
 db.ref('/trains').on('child_added', function (childSnap, prevChildKey) {
 
     // extract data from db record and store in variables
-    var name = childSnap.val().name,
+    let name = childSnap.val().name,
         dest = childSnap.val().dest,
         time = childSnap.val().time,
         freq = childSnap.val().freq;
 
-    // calculate time of next train based on current time
-    var next = moment(time, "HH:mm").subtract(1, "years");
-    console.log(next);
-    var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"))
 
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    let firstTimeConverted = moment(time, "hh:mm").subtract(1, "years");
+    // Difference between the times
+    let diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    // Time apart (remainder)
+    let tRemainder = diffTime % freq;
+    // Minute Until Train
+    let tMinutesTillTrain = freq - tRemainder;
+    // Next Train - formatted for AM PM
+    let nextTrain = moment().add(tMinutesTillTrain, 'minutes').format('hh:mm A');
 
     // take extracted values and report to table on page
-    $('#train-display').append('<tr><td>'+name+'</td><td>'+dest+'</td><td>'+freq+'</td><td>'+currentTime+'</td><td>'+time+'</td></tr>')
+    $('#train-display').append('<tr><td>' + name + '</td><td>' + dest + '</td><td>' + freq + '</td><td>' + nextTrain + '</td><td>' + tMinutesTillTrain + '</td></tr>')
 });
 
-clearInputs();
+}); // end of document ready
